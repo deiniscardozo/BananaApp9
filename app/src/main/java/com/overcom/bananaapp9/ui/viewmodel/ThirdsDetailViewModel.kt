@@ -71,7 +71,7 @@ class ThirdsDetailViewModel : ViewModel() {
         }
     }
 
-    fun tabs(fragmentActivity: FragmentActivity, resources: Resources){
+    /*fun tabs(fragmentActivity: FragmentActivity, resources: Resources){
         val collectionAdapter = CollectionAdapter(fragmentActivity)
         val viewPager: ViewPager2 = _viewPager2.value!!
         val tabs: TabLayout = _tabs.value!!
@@ -84,7 +84,7 @@ class ThirdsDetailViewModel : ViewModel() {
 
     fun tabs2() {
 
-    }
+    }*/
 
 
 }
