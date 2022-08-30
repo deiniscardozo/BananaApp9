@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">BananaApp</string>
+    <string name="search_hint">Busqueda por nombre, rif, alias</string>
+    <string name="Email_RP">Ingresa el correo electrónico que usaste cuando te registraste y te enviaremos una contraseña temporal.</string>
+    <string name="OK">Aceptar</string>
+    <string name="Cancel">Cancelar</string>
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="change_organization">Cambiar Organización</string>
+    <string name="menu_home">Inicio</string>
+    <string name="menu_thirds">Terceros</string>
+    <string name="menu_thirds_detail">Detalles de Terceros</string>
+    <string name="menu_logout">Cerrar Sesión</string>
+    <string name="choose_an_option">Elige una Opción</string>
+</resources>

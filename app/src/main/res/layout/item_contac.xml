@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_marginHorizontal="8dp"
+    android:layout_marginVertical="2dp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/SplashScreen"
+    app:cardCornerRadius="25dp"
+    app:cardElevation="10dp">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_dialog">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginVertical="8dp">
+
+        <TextView
+            android:id="@+id/tvContacsName"
+            android:layout_width="330dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="Contacto" />
+
+        <TextView
+            android:id="@+id/tvContacsCargo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvContacsName"
+            tools:text="Cargo" />
+
+        <TextView
+            android:id="@+id/tvContacsEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvContacsCargo"
+            tools:text="Correo" />
+
+        <TextView
+            android:id="@+id/tvContacsPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvContacsEmail"
+            tools:ignore="MissingConstraints"
+            tools:text="Telefono 1" />
+
+        <TextView
+            android:id="@+id/tvContacsPhone2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="101dp"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toEndOf="@+id/tvContacsPhone"
+            app:layout_constraintTop_toBottomOf="@+id/tvContacsEmail"
+            tools:ignore="MissingConstraints"
+            tools:text="Telefono 2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</LinearLayout>
+
+</androidx.cardview.widget.CardView>

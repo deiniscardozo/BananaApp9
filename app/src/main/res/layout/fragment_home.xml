@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/fragment_home"
+    android:tag="fragment_home"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_banana"
+    tools:context=".ui.view.modules.HomeActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/logo"
+                android:layout_width="287dp"
+                android:layout_height="75dp"
+                android:foregroundGravity="center_horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:srcCompat="@drawable/logo_bananahome" />
+
+            <ImageView
+                android:id="@+id/terceros"
+                android:layout_width="181dp"
+                android:layout_height="187dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_home_icon"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/logo"
+                app:srcCompat="@drawable/ic_thirds_home" />
+
+            <TextView
+                android:id="@+id/iveThirds"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chilanka"
+                android:text="Terceros"
+                android:textAlignment="textEnd"
+                android:textColor="@color/green_palette"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintHorizontal_bias="0.52"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/terceros"
+                app:layout_constraintVertical_bias="0.05" />
+
+            <ImageView
+                android:id="@+id/ivVisits"
+                android:layout_width="181dp"
+                android:layout_height="187dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_home_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toBottomOf="@+id/logo"
+                app:srcCompat="@drawable/ic_calendar_home" />
+
+            <TextView
+                android:id="@+id/iveVisits"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chilanka"
+                android:text="Visitas"
+                android:textAlignment="textEnd"
+                android:textColor="@color/green_palette"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@+id/guideline5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toBottomOf="@+id/ivVisits"
+                app:layout_constraintVertical_bias="0.0" />
+
+            <TextView
+                android:id="@+id/iveProducts"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chilanka"
+                android:text="Productos"
+                android:textAlignment="textEnd"
+                android:textColor="@color/green_palette"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toBottomOf="@+id/ivProduct" />
+
+            <ImageView
+                android:id="@+id/ivProduct"
+                android:layout_width="181dp"
+                android:layout_height="187dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_home_icon"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="@+id/guideline4"
+                app:layout_constraintTop_toTopOf="@+id/guideline5"
+                app:srcCompat="@drawable/ic_product_home" />
+
+            <TextView
+                android:id="@+id/iveOrders"
+                android:layout_width="181dp"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/chilanka"
+                android:text="Pedidos"
+                android:textAlignment="textEnd"
+                android:textColor="@color/green_palette"
+                android:textSize="30dp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/ivOrders" />
+
+            <ImageView
+                android:id="@+id/ivOrders"
+                android:layout_width="181dp"
+                android:layout_height="187dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/bg_home_icon"
+                app:layout_constraintEnd_toStartOf="@+id/guideline4"
+                app:layout_constraintHorizontal_bias="0.52"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/guideline5"
+                app:srcCompat="@drawable/ic_orders_home" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintGuide_percent="0.5" />
+
+            <androidx.constraintlayout.widget.Guideline
+                android:id="@+id/guideline5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layout_constraintGuide_percent="0.57" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </ScrollView>
+</androidx.constraintlayout.widget.ConstraintLayout>
