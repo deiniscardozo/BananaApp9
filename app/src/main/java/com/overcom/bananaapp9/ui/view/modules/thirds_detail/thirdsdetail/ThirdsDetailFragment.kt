@@ -39,7 +39,6 @@ class ThirdsDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-
         _binding = FragmentThirdsDetailBinding.inflate(inflater, container, false)
 
         viewTabs = layoutInflater.inflate(R.layout.tabs_thirds_detail, container, true)

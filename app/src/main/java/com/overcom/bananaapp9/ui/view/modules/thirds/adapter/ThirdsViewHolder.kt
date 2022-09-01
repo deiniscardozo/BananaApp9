@@ -24,6 +24,8 @@ class ThirdsViewHolder(view: View): RecyclerView.ViewHolder(view) {
 
         if (thirdsModel.archived == 1) {
             binding.itemThirds.setBackgroundResource(R.drawable.bg_recycler_ic_ar)
+        } else {
+            binding.itemThirds.setBackgroundResource(R.drawable.bg_recycler_ic)
         }
 
         itemView.setOnClickListener { onClickListener(thirdsModel) }

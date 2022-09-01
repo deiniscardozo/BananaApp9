@@ -2,21 +2,15 @@ package com.overcom.bananaapp9.ui.viewmodel
 
 import android.content.Context
 import android.content.DialogInterface
-import android.content.res.Resources
 import androidx.appcompat.app.AlertDialog
-import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.viewpager2.widget.ViewPager2
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.overcom.bananaapp9.R
 import com.overcom.bananaapp9.core.Utils.Util
 import com.overcom.bananaapp9.data.model.ThirdsData
 import com.overcom.bananaapp9.data.model.repositories.ThirdsRepository
-import com.overcom.bananaapp9.ui.view.modules.thirds_detail.CollectionAdapter
 import kotlinx.coroutines.launch
 
 
