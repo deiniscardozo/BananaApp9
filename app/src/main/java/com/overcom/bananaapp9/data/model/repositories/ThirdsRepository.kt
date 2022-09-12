@@ -7,7 +7,6 @@ class ThirdsRepository {
 
     private val apiService : ApiService = ApiAdapter.getApiAdapter().create(ApiService::class.java)
 
-    suspend fun thirdsCall(type_third: String, position: String,
-                           limit: String, filter: String) =
-        apiService.listThirds(type_third, position, limit, filter)
+    suspend fun thirdsCall(type_third: String, filter: String, limit: String, position: String) =
+        apiService.listThirds(type_third, filter, limit, position)
 }

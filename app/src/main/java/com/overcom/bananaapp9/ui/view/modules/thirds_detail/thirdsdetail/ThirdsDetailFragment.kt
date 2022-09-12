@@ -1,14 +1,17 @@
 package com.overcom.bananaapp9.ui.view.modules.thirds_detail.thirdsdetail
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.viewpager.widget.ViewPager
+import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.android.material.tabs.TabLayout
+import com.google.android.material.tabs.TabLayoutMediator
 import com.overcom.bananaapp9.R
 import com.overcom.bananaapp9.databinding.FragmentThirdsDetailBinding
 import com.overcom.bananaapp9.ui.view.modules.thirds_detail.CollectionAdapter
@@ -23,7 +26,6 @@ class ThirdsDetailFragment : Fragment() {
     private val binding get() = _binding!!
     lateinit var viewModel: ThirdsDetailViewModel
     lateinit var tabs: TabLayout
-    lateinit var viewPager: ViewPager
     lateinit var viewTabs: View
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,27 +43,23 @@ class ThirdsDetailFragment : Fragment() {
     ): View {
         _binding = FragmentThirdsDetailBinding.inflate(inflater, container, false)
 
-        viewTabs = layoutInflater.inflate(R.layout.tabs_thirds_detail, container, true)
-        val root: View = binding.root
+        viewTabs = LayoutInflater.from(container!!.context).inflate(R.layout.tabs_thirds_detail,
+            container, false)
 
-        viewPager = viewTabs.findViewById(R.id.viewPager2)
-        tabs = viewTabs.findViewById(R.id.tabLayout)
-
-        initUI()
-        return root
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-       /* val collectionAdapter = CollectionAdapter(requireActivity())
-        val viewP2: ViewPager2? = viewPager
-        viewP2?.adapter = collectionAdapter
+        val collectionAdapter = CollectionAdapter(requireActivity())
+        tabs = viewTabs.findViewById(R.id.tabLayout)
+        val viewP2: ViewPager2 = viewTabs.findViewById(R.id.viewPager2)
+        viewP2.adapter = collectionAdapter
 
-        TabLayoutMediator(tabs!!, viewP2!!) { tab, position ->
+        TabLayoutMediator(tabs, viewP2) { tab, position ->
             tab.text = resources.getStringArray(R.array.thirds_details)[position]
-          //  Log.i("Deinis4", tab.toString())
-        }.attach()*/
+        }.attach()
 
        /* binding.tabLayout.addOnTabSelectedListener(object : TabLayout.OnTabSelectedListener {
             override fun onTabReselected(p0: TabLayout.Tab?) {
@@ -109,7 +107,7 @@ class ThirdsDetailFragment : Fragment() {
         })*/
 
         // set the references of the declared objects above
-        var pager: ViewPager = viewPager
+       /* var pager: ViewPager = viewPager
         var tab: TabLayout = tabs
 
         // Initializing the ViewPagerAdapter
@@ -121,7 +119,7 @@ class ThirdsDetailFragment : Fragment() {
         adapter.addFragment(DocumentsFragment(), "Documentos")
 
         // Adding the Adapter to the ViewPager
-        pager.adapter = adapter
+        pager.adapter = adapter*/
 
         // bind the viewPager with the TabLayout.
       //  tab.setupWithViewPager(pager)
@@ -138,6 +136,7 @@ class ThirdsDetailFragment : Fragment() {
 
             if (detail.branch_offices[0].principal == 1){
                 binding.addressView.setText(detail.branch_offices[0].address.toString())
+                binding.addressView.setAutoSizeTextTypeUniformWithConfiguration(10,100,10, 10)
                 binding.cityView.setText(detail.branch_offices[0].city)
                 binding.countryView.setText(detail.branch_offices[0].country)
                 binding.phoneView.setText(detail.branch_offices[0].phone.toString())

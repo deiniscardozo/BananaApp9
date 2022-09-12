@@ -54,12 +54,10 @@ class ProductFragment : Fragment() {
 
             val apiService : ApiService = ApiAdapter.getApiAdapter().create(ApiService::class.java)
             val type_third = "todos"
-            val position = "0"
-            val limit = "100"
             val filter = filter
-            val call: Response<ThirdsDataItem> = apiService.listThirds(type_third, position, limit, filter)
+            //val call: Response<ThirdsDataItem> = apiService.listThirds(type_third)
 
-                if(call.isSuccessful){
+             /*   if(call.isSuccessful){
 
                     listThirds.clear()
                     listThirds.addAll(call.body()!!.thirds)
@@ -67,7 +65,7 @@ class ProductFragment : Fragment() {
                     activity?.runOnUiThread {
                         initRecyclerView()
                     }
-                }
+                }*/
             }
     }
 

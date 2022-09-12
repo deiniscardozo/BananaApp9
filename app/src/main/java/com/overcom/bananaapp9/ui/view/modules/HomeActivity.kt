@@ -1,7 +1,6 @@
 package com.overcom.bananaapp9.ui.view.modules
 
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.Menu
 import android.view.MenuItem
@@ -17,21 +16,15 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.google.android.material.navigation.NavigationView
-import com.google.android.material.tabs.TabLayout
-import com.google.android.material.tabs.TabLayoutMediator
 import com.overcom.bananaapp9.R
 import com.overcom.bananaapp9.core.ApiAdapter
 import com.overcom.bananaapp9.data.model.Logout
 import com.overcom.bananaapp9.data.network.ApiService
 import com.overcom.bananaapp9.databinding.ActivityHomeBinding
-import com.overcom.bananaapp9.databinding.TabsThirdsDetailBinding
 import com.overcom.bananaapp9.io.dataacces.BananaAppAplication.Companion.preferences
 import com.overcom.bananaapp9.ui.view.modules.home.HomeFragment
-import com.overcom.bananaapp9.ui.view.modules.thirds_detail.CollectionAdapter
-import com.overcom.bananaapp9.ui.viewmodel.ThirdsDetailViewModel
 import com.overcom.bananaapp9.ui.viewmodel.ThirdsViewModel
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
@@ -112,8 +105,7 @@ class HomeActivity : AppCompatActivity() {
             override fun onQueryTextSubmit(query: String): Boolean {
 
                 viewModel._filter.value = query
-                viewModel.thirdsCall(typeThirds = "customer_prospect_archivados",
-                    positions = "0")
+                viewModel.thirdsCall(typeThirds = "customer_prospect_archivados")
                 return true
             }
 

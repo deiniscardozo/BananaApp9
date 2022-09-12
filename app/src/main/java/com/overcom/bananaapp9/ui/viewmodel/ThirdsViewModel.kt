@@ -2,6 +2,7 @@ package com.overcom.bananaapp9.ui.viewmodel
 
 import android.content.Context
 import android.content.DialogInterface
+import android.util.Log
 import androidx.appcompat.app.AlertDialog
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -24,8 +25,8 @@ class ThirdsViewModel : ViewModel() {
     private val _type_third = MutableLiveData<String>()
     var type_third: LiveData<String> = _type_third
 
-    private val _position = MutableLiveData<String>()
-    var position: LiveData<String> = _position
+    val _position = MutableLiveData<Int>()
+    var position: LiveData<Int> = _position
 
     private val _limit = MutableLiveData<Int>()
     var limit: LiveData<Int> = _limit
@@ -39,37 +40,50 @@ class ThirdsViewModel : ViewModel() {
     val _filter = MutableLiveData<String>()
     var filter: LiveData<String> = _filter
 
-    fun thirdsCall(typeThirds: String, positions: String) {
+    fun thirdsCall(typeThirds: String) {
         _type_third.value = typeThirds
-        _position.value = positions
-        _limit.value = 100
+        _limit.value = 1
         _load.value = true
+        _position.value = 0
 
         if(filter.value.isNullOrEmpty())
             _filter.value = ""
 
+      /*  if(listThirds.value.isNullOrEmpty()) {
+            _position.value = 0
+        } else {
+            _position.value = listThirds.value!!.size + 1
+        }*/
+
         viewModelScope.launch {
-            val call = repository.thirdsCall(type_third.value.toString(), position.value.toString(),
-                limit.value.toString(), filter.value.toString())
+            Log.i("Deinis", type_third.value.toString())
+            Log.i("Deinis1", limit.value.toString())
+            Log.i("Deinis2", position.value.toString())
+
+           val call = repository.thirdsCall(type_third.value.toString(), filter.value.toString(),
+                limit.value.toString(), position.value.toString())
 
             if (call.isSuccessful){
-
                 call.body()!!.thirds.let { list->
-                    _listThirds.value = list
+
+                    if(listThirds.value.isNullOrEmpty()) {
+                        _listThirds.value = list
+                        _position.value = 0
+                    } else {
+                        _listThirds.value = listThirds.value?.plus(list)
+                        _position.value = listThirds.value!!.size + 1
+                    }
+
                     _load.value = false
                     _activateFilter.value = true
                     _filter.value = ""
+                    _limit.value = list.size
                 }
 
             }else{
                 Util.callNotSuccessful(call.errorBody()?.string().toString())
             }
         }
-    }
-
-    fun position(typeThirds: String){
-        for(i in 1..100)
-            thirdsCall(typeThirds, i.toString())
     }
 
     fun filterThirds(context: Context) {
@@ -101,12 +115,10 @@ class ThirdsViewModel : ViewModel() {
                             }
                         }
                     }
-
-                    thirdsCall(type_third.value.toString(), position.value.toString())
+                    thirdsCall(type_third.value.toString())
                 })
 
         builder.create()
         builder.show()
     }
-
 }

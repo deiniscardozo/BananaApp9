@@ -146,8 +146,7 @@
                     <com.google.android.material.textfield.TextInputEditText
                         android:id="@+id/addressView"
                         android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:autoSizeTextType="uniform"
+                        android:layout_height="match_parent"
                         android:inputType="textImeMultiLine" />
 
                 </com.google.android.material.textfield.TextInputLayout>

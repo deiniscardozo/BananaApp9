@@ -1,41 +1,22 @@
 package com.overcom.bananaapp9.ui.view.modules.thirds_detail
 
+import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.FragmentManager
-import androidx.fragment.app.FragmentStatePagerAdapter
+import androidx.fragment.app.FragmentActivity
+import androidx.recyclerview.widget.RecyclerView
+import androidx.viewpager2.adapter.FragmentStateAdapter
+import com.overcom.bananaapp9.R
+import com.overcom.bananaapp9.ui.view.modules.thirds_detail.contact.ContactFragment
+import com.overcom.bananaapp9.ui.view.modules.thirds_detail.documents.DocumentsFragment
+import com.overcom.bananaapp9.ui.view.modules.thirds_detail.thirdsdetail.ThirdsDetailFragment
 
-
-class CollectionAdapter(supportFragmentManager: FragmentManager) :
-    FragmentStatePagerAdapter(supportFragmentManager) {
-
-    // declare arrayList to contain fragments and its title
-    private val mFragmentList = ArrayList<Fragment>()
-    private val mFragmentTitleList = ArrayList<String>()
-
-    override fun getItem(position: Int): Fragment {
-        // return a particular fragment page
-        return mFragmentList[position]
-    }
-
-    override fun getCount(): Int {
-        // return the number of tabs
-        return mFragmentList.size
-    }
-
-    override fun getPageTitle(position: Int): CharSequence{
-        // return title of the tab
-        return mFragmentTitleList[position]
-    }
-
-    fun addFragment(fragment: Fragment, title: String) {
-        // add each fragment and its title to the array list
-        mFragmentList.add(fragment)
-        mFragmentTitleList.add(title)
-    }
-}
-
-/*(fm: FragmentActivity) :
+class CollectionAdapter(fm: FragmentActivity) :
     FragmentStateAdapter(fm) {
+
+    override fun onAttachedToRecyclerView(recyclerView: RecyclerView) {
+        super.onAttachedToRecyclerView(recyclerView)
+        LayoutInflater.from(recyclerView.context).inflate(R.layout.tabs_thirds_detail, recyclerView, false)
+    }
 
     override fun getItemCount(): Int {
         return 3
@@ -49,4 +30,4 @@ class CollectionAdapter(supportFragmentManager: FragmentManager) :
             else -> throw IllegalStateException("Unexpected position $position")
         }
     }
-}*/
+}

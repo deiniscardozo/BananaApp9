@@ -16,7 +16,6 @@ class Preferences (val context : Context){
     val SHARED_THIRDSID = "thirdsId"
     val SHARED_THIRDSTYPE = "thirdsType"
     val SHARED_FIRSTRUN = "firstRun"
-    val SHARED_POSITION = "position"
 
     val storage = context.getSharedPreferences("PREFERENCE_NAME", 0)
 
@@ -68,10 +67,6 @@ class Preferences (val context : Context){
         storage.edit().putBoolean(SHARED_FIRSTRUN, firstRun).apply()
     }
 
-    fun savePosition(position: Int){
-        storage.edit().putInt(SHARED_POSITION, position).apply()
-    }
-
     fun getWorkspace():String{
         return storage.getString(SHARED_WORKSPACE, "")!!
     }
@@ -118,10 +113,6 @@ class Preferences (val context : Context){
 
     fun getFirstRun():Boolean{
         return storage.getBoolean(SHARED_FIRSTRUN, false)
-    }
-
-    fun getPosition():Int {
-        return storage.getInt(SHARED_POSITION, 0)
     }
 
     fun logout(){

@@ -19,13 +19,13 @@ interface ApiService {
 
     @GET("api/thirds")
     suspend fun listThirds(@Query("type_third") type_third: String,
-                   @Query("position") position: String,
-                   @Query("limit") limit: String,
-                   @Query("filter") filter: String) : Response<ThirdsDataItem>
+                           @Query("filter") filter: String,
+                           @Query("limit") limit: String,
+                           @Query("position") position: String) : Response<ThirdsDataItem>
 
     @GET("api/third/{id}")
     suspend fun listThirdsDetail(@Path("id") id: String,
-                         @Query("resources") resources: String) : Response<ThirdsDataDetailItem>
+                                 @Query("resources") resources: String) : Response<ThirdsDataDetailItem>
 
     @GET("api/users/reset/password/{email}")
     suspend fun ForgetPassword(@Path("email") email: String) : Response<ForgotPassword>

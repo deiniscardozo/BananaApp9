@@ -1,6 +1,7 @@
 package com.overcom.bananaapp9.ui.view.modules.thirds
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,8 @@ import com.overcom.bananaapp9.io.dataacces.BananaAppAplication.Companion.prefere
 import com.overcom.bananaapp9.ui.view.modules.thirds.adapter.ThirdsAdapter
 import com.overcom.bananaapp9.ui.view.modules.thirds_detail.thirdsdetail.ThirdsDetailFragment
 import com.overcom.bananaapp9.ui.viewmodel.ThirdsViewModel
+import kotlin.properties.Delegates
+
 
 class ThirdsFragment : Fragment() {
     private var _binding: FragmentThirdsBinding? = null
@@ -24,9 +27,6 @@ class ThirdsFragment : Fragment() {
     var listThirds: MutableList<ThirdsData> = mutableListOf()
     private lateinit var viewModel: ThirdsViewModel
     private lateinit var typeThirds: String
-    private var positions: Int? = null
-    private var positionsR: Int? = null
-    private var totalItemCount: Int? = null
     private var mAdapter: ThirdsAdapter? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,7 +53,7 @@ class ThirdsFragment : Fragment() {
         val linearLayoutManager = LinearLayoutManager(activity)
 
         binding.swipeRefreshLayout.setOnRefreshListener {
-            viewModel.thirdsCall(typeThirds, positionsR.toString())
+            viewModel.thirdsCall(typeThirds)
             binding.swipeRefreshLayout.isRefreshing = false
         }
 
@@ -63,27 +63,26 @@ class ThirdsFragment : Fragment() {
             preferences.saveThirdsID(it.id)
         }
 
+        binding.reciclerThirdsLoading.isVisible = false
+
         binding.reciclerThirds.apply {
+            isVisible = true
             layoutManager = linearLayoutManager
             adapter = mAdapter
-            preferences.savePosition(0)
 
             clearOnScrollListeners()
-
             addOnScrollListener(object : RecyclerView.OnScrollListener() {
-                override fun onScrollStateChanged(recyclerView: RecyclerView, newState: Int) {
-                    super.onScrollStateChanged(recyclerView, newState)
+                override fun onScrolled(
+                    recyclerView: RecyclerView,
+                    firstVisibleItem: Int,
+                    visibleItemCount: Int
+                ) {
+                    super.onScrolled(recyclerView, firstVisibleItem, visibleItemCount)
+                    val totalItemCount = listThirds.size
+                    val lastVisibleItemPosition = linearLayoutManager.findLastVisibleItemPosition()
 
-                    viewModel.listThirds.observe(viewLifecycleOwner) {
-                        mAdapter!!.setItems(list = it)
-                        totalItemCount = it.size
-                    }
-
-                    if (totalItemCount == 100) {
-                        viewModel.thirdsCall(typeThirds, positions.toString())
-                    } else {
-                        preferences.savePosition(0)
-                        invalidate()
+                    if (totalItemCount == lastVisibleItemPosition + 1) {
+                        viewModel.thirdsCall(typeThirds)
                     }
                 }
             })
@@ -91,18 +90,6 @@ class ThirdsFragment : Fragment() {
 
         viewModel.type_third.observe(viewLifecycleOwner) {
             typeThirds = it
-        }
-
-        viewModel.limit.observe(viewLifecycleOwner) { limit ->
-
-            positions = preferences.getPosition() + limit
-            preferences.savePosition(positions!!)
-
-            if(preferences.getPosition() == 0){
-                positionsR = preferences.getPosition()
-            }else{
-                positionsR = 0
-            }
         }
 
         viewModel.load.observe(viewLifecycleOwner) { show ->
@@ -113,13 +100,11 @@ class ThirdsFragment : Fragment() {
             mAdapter!!.setItems(list = it)
         }
 
-        viewModel.thirdsCall("customer_prospect_archivados", "0")
+        viewModel.thirdsCall("customer_prospect_archivados")
     }
 
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-        preferences.savePosition(0)
     }
-
 }
